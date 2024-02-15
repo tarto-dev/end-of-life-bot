@@ -35,3 +35,4 @@ jobs:
       with:
         environment: dev
         version: ${{ github.run_id }}
+        ignore-missing: true
