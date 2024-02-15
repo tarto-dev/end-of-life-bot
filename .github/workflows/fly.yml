@@ -34,4 +34,4 @@ jobs:
         SENTRY_LOG_LEVEL: info
       with:
         environment: dev
-        version: ${{ github.sha }}
+        version: ${{ github.run_id }}
