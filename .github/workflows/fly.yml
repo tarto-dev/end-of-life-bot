@@ -21,7 +21,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
       with:
-        fetch-depth: 0
+        fetch-depth: 5
               
     # This step creates real Sentry releases for the action itself:
     # https://sentry-ecosystem.sentry.io/releases/?project=6576594
