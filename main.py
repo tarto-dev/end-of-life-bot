@@ -42,14 +42,14 @@ def get_product_details_from_api(product: str, majors_only: bool):
     """
     details = API.get_product_details(product=product)
     if majors_only:
-        # Sort the details by major version number
-        details.sort(key=lambda x: int(x["cycle"].split(".")[0]))
+        excluded_minors_products = []
+        latest_major = 0
+        for entry in details:
+            if entry["cycle"].split(".")[0] != latest_major:
+                excluded_minors_products.append(entry)
+                latest_major = entry["cycle"].split(".")[0]
 
-        # Group the details by major version number
-        groups = groupby(details, key=lambda x: x["cycle"].split(".")[0])
-
-        # Take the first entry from each group
-        details = [next(group) for _, group in groups]
+        details = excluded_minors_products
 
     return details
 
