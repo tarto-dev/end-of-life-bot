@@ -12,6 +12,19 @@ from main import (
 )
 from configs import BOT_TOKEN
 
+import sentry_sdk
+
+sentry_sdk.init(
+    dsn="https://92a13f27d4650d93ea30e11bd3db649f@o472921.ingest.sentry.io/4506748874129408",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
+
 bot = InteractionBot()
 products = get_all_products_from_api()
 
