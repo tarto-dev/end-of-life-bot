@@ -223,28 +223,27 @@ async def product_cycle(
     # Sending the Embed message
     await inter.channel.send(embed=embed)
 
-    # Slash command to get help information
-    @bot.slash_command(description="Get help information about the bot")
-    async def help(inter):
-        embed = Embed(title="Bot Help")
-        embed.add_field(
-            name="/get_products", value="Gets all available products", inline=False
-        )
-        embed.add_field(
-            name="/product_details",
-            value="Get EoL dates of all cycles of a given product.",
-            inline=False,
-        )
-        embed.add_field(
-            name="/product_cycle", value="Gets details of a single cycle", inline=False
-        )
-        embed.add_field(
-            name="/help", value="Get help information about the bot", inline=False
-        )
-        embed.set_footer(
-            text="Use /help <command> for more details on a specific command."
-        )
-        await inter.channel.send(embed=embed)
+
+# Slash command to get help information
+@bot.slash_command(description="Get help information about the bot")
+async def help(inter):
+    embed = Embed(title="Bot Help")
+    embed.add_field(
+        name="/get_products", value="Gets all available products", inline=False
+    )
+    embed.add_field(
+        name="/product_details",
+        value="Get EoL dates of all cycles of a given product.",
+        inline=False,
+    )
+    embed.add_field(
+        name="/product_cycle", value="Gets details of a single cycle", inline=False
+    )
+    embed.add_field(
+        name="/help", value="Get help information about the bot", inline=False
+    )
+    embed.set_footer(text="Use /help <command> for more details on a specific command.")
+    await inter.channel.send(embed=embed)
 
 
 # Running the bot with the provided token
