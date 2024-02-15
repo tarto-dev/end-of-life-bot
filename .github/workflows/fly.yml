@@ -14,3 +14,24 @@ jobs:
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  sentry-release:
+    name: Publish new Sentry release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+              
+    # This step creates real Sentry releases for the action itself:
+    # https://sentry-ecosystem.sentry.io/releases/?project=6576594
+    - name: Sentry Release
+      uses: getsentry/action-release@v1.4.1
+      env:
+        SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+        SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        SENTRY_LOG_LEVEL: info
+      with:
+        environment: dev
+        version: ${{ github.sha }}
