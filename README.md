@@ -1,6 +1,6 @@
 # end-of-life bot
 
-Brief project description goes here.
+This project is a Discord bot that provides end-of-life information for various software products
 
 ## Table of Contents
 
