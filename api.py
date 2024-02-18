@@ -1,6 +1,5 @@
 import requests
-
-API_URL = "https://endoflife.date/api/"
+from configs import API_URL
 
 
 class EOLApi:
