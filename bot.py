@@ -10,18 +10,16 @@ from main import (
     get_single_cycle_details_from_api,
     get_product_details_from_api,
 )
-from configs import BOT_TOKEN
+from configs import BOT_TOKEN, SENTRY_DSN
 
 import sentry_sdk
 
+# Initialize Sentry SDK with the provided DSN (Data Source Name).
+# The traces_sample_rate is set to 1.0, meaning that 100% of transactions will be sent to Sentry.
+# The profiles_sample_rate is also set to 1.0, meaning that 100% of function execution profiles will be sent to Sentry.
 sentry_sdk.init(
-    dsn="https://92a13f27d4650d93ea30e11bd3db649f@o472921.ingest.sentry.io/4506748874129408",
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
+    dsn=SENTRY_DSN,
     traces_sample_rate=1.0,
-    # Set profiles_sample_rate to 1.0 to profile 100%
-    # of sampled transactions.
-    # We recommend adjusting this value in production.
     profiles_sample_rate=1.0,
 )
 
